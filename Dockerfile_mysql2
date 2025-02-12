@@ -1,0 +1,14 @@
+FROM mysql:latest
+
+# Define as variáveis de ambiente para criar um banco e usuário automaticamente
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=Bancojr
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=861601
+
+# Copia os scripts SQL para inicialização automática
+COPY init.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 3306
+CMD ["mysqld"]
+
